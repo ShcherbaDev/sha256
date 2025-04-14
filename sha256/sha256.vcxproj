@@ -155,7 +155,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="find_prefix.h" />
+    <ClCompile Include="find_prefix.hpp" />
     <ClCompile Include="sha256.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="utils.cpp" />

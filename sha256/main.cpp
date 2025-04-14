@@ -1,7 +1,7 @@
 #include <iostream>
 
 #include "sha256.h"
-#include "find_prefix.h"
+#include "find_prefix.hpp"
 
 void assert(int test_index, std::string input, std::string expected_output) {
 	sha256 sha256;
@@ -20,7 +20,7 @@ int main() {
 	assert(5, std::string(1000000, 'a'), "cdc76e5c9914fb9281a1c7e284d73e67f1809a48a497200e046d39ccc7112cd0");
 
 	// Task 2
-	// find_prefix("give my friend 2 bitcoins for a pizza", 32);
+	// find_prefix("give my friend 2 bitcoins for a pizza");
 
 	// Task 5
 	sha256 task5_sha256;
