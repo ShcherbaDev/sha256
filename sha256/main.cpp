@@ -1,4 +1,6 @@
 #include <iostream>
+#include <fstream>
+#include <vector>
 
 #include "sha256.h"
 #include "find_prefix.hpp"
@@ -23,8 +25,8 @@ int main() {
 	// find_prefix("give my friend 2 bitcoins for a pizza");
 
 	// Task 5
-	sha256 task5_sha256;
-	std::cout << "\nTask 5 hash: " << task5_sha256.hash("give my friend 2 bitcoins for a pizza") << '\n';
+	// sha256 task5_sha256;
+	// std::cout << "\nTask 5 hash: " << task5_sha256.hash("give my friend 2 bitcoins for a pizza") << '\n';
 	/*
 		Signing a result:
 
@@ -42,6 +44,21 @@ int main() {
 			-in hash_result.bin -sigfile signed.bin \
 			-pkeyopt digest:sha256 -pkeyopt rsa_padding_mode:pss -pkeyopt rsa_pss_saltlen:-1
 	*/
+
+	// Task 8
+	sha256 task8_sha256;
+	std::ifstream file("../kse.der", std::ios::binary);
+	if (!file) {
+		std::cerr << "kse.der was not found\n";
+		return 1;
+	}
+
+	std::vector<uint8_t> buffer(std::istreambuf_iterator<char>(file), {});
+	file.close();
+
+	std::string buffer_binary(buffer.begin(), buffer.end());
+	std::string hash = task8_sha256.hash(buffer_binary);
+	std::cout << "Task 8 hash: " << hash << "\n";
 
 	return 0;
 }
